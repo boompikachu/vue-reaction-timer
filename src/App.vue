@@ -3,6 +3,7 @@
   <button @click="start()" :disabled="isPlaying">Play</button>
   <Block v-if="isPlaying" :delay="delay" @end="endGame($event)"/>
   <Result v-if="showResult" :score="score"/>
+  <div class="fail" @click="gameOver()"></div>
 </template>
 
 <script>
@@ -33,6 +34,11 @@ export default {
       this.score = reactionTime
       this.isPlaying = false
       this.showResult = true
+    },
+    gameOver() {
+      this.isPlaying = false
+      console.log("Game over")
+      
     }
   }
 }
@@ -61,5 +67,8 @@ button {
 button[disabled] {
   opacity: 0.2;
   cursor: not-allowed;
+}
+.fail {
+  padding-bottom: 100%;
 }
 </style>

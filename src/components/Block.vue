@@ -24,6 +24,7 @@ export default {
         startTimer() {
             this.timer = setInterval(() => {
                 this.reactionTime += 10
+                console.log("sadf")
             }, 10)
         },
         stopTimer() {
@@ -31,6 +32,9 @@ export default {
             console.log(this.reactionTime)
             this.$emit('end', this.reactionTime)
         }
+    },
+    unmounted() {
+        clearInterval(this.timer)
     }
 
 }
@@ -38,9 +42,9 @@ export default {
 
 <style>
     .block {
-        width: 400px;
+        max-width: 400px;
         border-radius: 20px;
-        background-color: orange;
+        background-color: #0faf87;
         color: white;
         text-align: center;
         padding: 100px 0;
